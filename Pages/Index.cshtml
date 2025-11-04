@@ -1,0 +1,211 @@
+﻿@* @page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+
+@page
+@model SemanticBotStar.Pages.IndexModel
+@{
+    ViewData["Title"] = "Star SemanticBot";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9fafb;
+            color: #111827;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: #111;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        input, button, textarea {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db;
+            outline: none;
+        }
+
+            input[type="text"] {
+                width: 100%;
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+            button:hover {
+                background: #1d4ed8;
+            }
+
+        .result, .context {
+            margin-top: 1.5rem;
+            background: #f3f4f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .spinner {
+            display: none;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+            .spinner.active {
+                display: block;
+            }
+
+        strong, b {
+            font-weight: 600;
+        }
+
+        em, i {
+            font-style: italic;
+        }
+
+        code {
+            background: #e5e7eb;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star SemanticBot</h1>
+
+    <div class="container">
+        <h3>📂 Ingest Folder</h3>
+        <input id="folderPath" type="text" placeholder="Enter folder path (e.g. C:\\Docs)" />
+        <button type="button" onclick="ingestFolder()">Upload</button>
+        <p id="ingestStatus" class="spinner"></p>
+
+        <hr style="margin: 2rem 0; border: 0; border-top: 1px solid #e5e7eb;">
+
+        <h3>💬 Ask a Question</h3>
+        <input id="question" type="text" placeholder="Ask your question..." />
+        <button type="button" onclick="ask()">Ask</button>
+        <p id="loading" class="spinner">⏳ Waiting for response...</p>
+
+        <div id="answer" class="result"></div>
+        <div id="context" class="context"></div>
+    </div>
+
+    <script>
+        const ingestFolder = async () => {
+            const path = document.getElementById("folderPath").value.trim();
+            const status = document.getElementById("ingestStatus");
+            if (!path) {
+                alert("Please enter a folder path.");
+                return;
+            }
+
+            status.textContent = "📁 Ingesting folder...";
+            status.classList.add("active");
+
+            try {
+                const res = await fetch("/ingest-folder", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ folderPath: path })
+                });
+                const data = await res.json();
+                status.textContent = data.message || "✅ Ingestion complete.";
+            } catch (err) {
+                status.textContent = "❌ Error ingesting folder.";
+            }
+        };
+
+        const ask = async () => {
+            const q = document.getElementById("question").value.trim();
+            const loading = document.getElementById("loading");
+            const answerDiv = document.getElementById("answer");
+            const contextDiv = document.getElementById("context");
+
+            if (!q) {
+                alert("Please enter a question.");
+                return;
+            }
+
+            answerDiv.innerHTML = "";
+            contextDiv.innerHTML = "";
+            loading.classList.add("active");
+
+            try {
+                const res = await fetch("/query", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ question: q, topK: 3 })
+                });
+                const data = await res.json();
+
+                loading.classList.remove("active");
+                const cleanedAnswer = cleanReasoning(data.answer || "No response.");
+                answerDiv.innerHTML = formatMarkdown(cleanedAnswer);
+                contextDiv.innerHTML = "<strong>📚 Context:</strong><br>" + (data.context?.join("<br>") || "No sources.");
+            } catch (err) {
+                loading.classList.remove("active");
+                answerDiv.textContent = "❌ Error getting response.";
+            }
+        };
+
+        function cleanReasoning(text) {
+            if (!text) return "";
+            return text.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+        }
+
+        function formatMarkdown(text) {
+            if (!text) return "";
+            return text
+                .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+                .replace(/\*(.*?)\*/g, "<em>$1</em>")
+                .replace(/`(.*?)`/g, "<code>$1</code>");
+        }
+    </script>
+</body>
+</html>

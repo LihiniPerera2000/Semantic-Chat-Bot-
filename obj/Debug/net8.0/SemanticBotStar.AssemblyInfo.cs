@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SemanticBotStar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8da17c7be1867d60ec775f07bdf7dda410b830e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82e9b78d26d7a479954e342f87369cc2b7825411")]
 [assembly: System.Reflection.AssemblyProductAttribute("SemanticBotStar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SemanticBotStar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

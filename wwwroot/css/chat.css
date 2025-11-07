@@ -1,0 +1,148 @@
+﻿:root {
+    --theme-color: #092760;
+    --theme-accent: #0b3885;
+    --theme-light: #f0f4ff;
+}
+
+/* =============================
+   GENERAL PAGE STYLING
+============================= */
+body {
+    background-color: #f8f9fc;
+    color: #333;
+}
+
+h4 {
+    color: var(--theme-color);
+    font-weight: 600;
+}
+
+p.text-muted {
+    font-size: 0.95rem;
+}
+
+/* =============================
+   CHAT CONTAINER
+============================= */
+#chatBox {
+    background: linear-gradient(to bottom right, #ffffff, var(--theme-light));
+    border: 1.5px solid #dce2f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(9, 39, 96, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+    #chatBox::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    #chatBox::-webkit-scrollbar-thumb {
+        background-color: rgba(9, 39, 96, 0.2);
+        border-radius: 10px;
+    }
+
+    /* Chat bubbles */
+    #chatBox .bg-primary {
+        background-color: var(--theme-color) !important;
+        border-radius: 12px 12px 0 12px;
+        display: inline-block;
+        max-width: 85%;
+        text-align: left;
+    }
+
+    #chatBox .bg-light {
+        background-color: #e9edf9 !important;
+        border-radius: 12px 12px 12px 0;
+        display: inline-block;
+        max-width: 85%;
+    }
+
+/* =============================
+   INPUT AREA
+============================= */
+#userInput {
+    border: 1px solid #cdd3e1;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    #userInput:focus {
+        border-color: var(--theme-color);
+        box-shadow: 0 0 4px rgba(9, 39, 96, 0.3);
+    }
+
+/* Send and Clear buttons */
+#sendBtn,
+.btn.btn-primary {
+    background-color: var(--theme-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+    #sendBtn:hover,
+    .btn.btn-primary:hover {
+        background-color: var(--theme-accent);
+    }
+
+.btn.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+}
+
+    .btn.btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+/* =============================
+   REFERENCES / CITATIONS PANEL
+============================= */
+#referenceList {
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(9, 39, 96, 0.1);
+    border: 1px solid #dce2f0;
+}
+
+    #referenceList .list-group-item {
+        border: none;
+        border-bottom: 1px solid #e6e9f3;
+        background-color: transparent;
+        color: #333;
+        font-size: 0.9rem;
+    }
+
+        #referenceList .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        #referenceList .list-group-item strong {
+            color: var(--theme-color);
+        }
+
+    #referenceList .text-muted {
+        color: #777 !important;
+    }
+
+/* =============================
+   RESPONSIVE ADJUSTMENTS
+============================= */
+@media (max-width: 768px) {
+    #chatBox,
+    #referenceList {
+        height: auto;
+    }
+
+    .d-flex.gap-2 {
+        flex-direction: column;
+    }
+
+    #sendBtn,
+    .btn.btn-secondary {
+        width: 100%;
+    }
+}

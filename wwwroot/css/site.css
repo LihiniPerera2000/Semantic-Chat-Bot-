@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -19,4 +19,32 @@ html {
 
 body {
   margin-bottom: 60px;
+}*/
+
+:root {
+    --theme-color: #092760;
+}
+
+ Global shared styling 
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f8f9fc;
+}
+
+.navbar-gradient {
+    background: linear-gradient(to right, var(--theme-color) 80%, #ffffff 100%);
+}
+
+.btn-theme {
+    background-color: var(--theme-color);
+    color: white;
+    border: none;
+}
+
+    .btn-theme:hover {
+        background-color: #0b3885;
+    }
+
+.text-theme {
+    color: var(--theme-color) !important;
 }

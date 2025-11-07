@@ -1,5 +1,12 @@
+wwwroot\css\chat.css
+wwwroot\css\dashboard.css
+wwwroot\css\index.css
+wwwroot\css\navigation.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\Images\BotLogo.png
+wwwroot\Images\BotLogo1.png
+wwwroot\Images\StarLogo.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -58,3 +65,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\css\upload.css

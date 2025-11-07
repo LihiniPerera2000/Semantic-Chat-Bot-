@@ -1,0 +1,182 @@
+﻿@page
+@model SemanticBotStar.Pages.UploadModel
+@{
+    ViewData["Title"] = "Upload Documents";
+}
+
+<link rel="stylesheet" href="~/css/upload.css" />
+
+<div class="container mt-4">   
+    <h4 class="mb-4">Upload Documents</h4>
+
+    @* Drag & Drop Box  *@
+    <div class="mb-4 p-4 border border-2 rounded text-center"
+         id="dropZone"
+         style="border-style: dashed; background-color: #fafafa;">
+
+        <!-- Icon + Heading -->
+        <p class="mb-2 fw-bold">
+            <i class="bi bi-cloud-arrow-up fs-1" style="color: #5a6171;"></i><br>
+            Drag and drop your PDF files here
+        </p>
+
+        <div id="selectBtnArea" class="mt-3">
+            <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click();">
+                Browse your files
+            </button>
+            <br>
+            <small class="text-muted">(Click the button to select files from your device.)</small>
+        </div>
+
+        <input type="file" id="fileInput" accept=".pdf" hidden onchange="handleFileSelect(event)">
+        <div id="fileList" class="mt-3"></div>
+    </div>
+
+    @* Metadata Form *@
+    <div id="metadataSection" class="p-4 border rounded mb-5">
+        <h4>Document Metadata</h4>
+        <p class="text-muted">Enter details about your document to help with organization and search.</p>
+
+        <form id="metadataForm">
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Document Title</label>
+                <input type="text" class="form-control" id="docTitle" placeholder="Example: User Guide 2025">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Category</label>
+                <select class="form-select" id="docCategory">
+                    <option value="Reports">Reports</option>
+                    <option value="User Manuals">User Manuals</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Tags</label>
+                <input type="text" class="form-control" id="docTags" placeholder="Example: Training, HR, Guidelines">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Description</label>
+                <textarea class="form-control" id="docDescription" rows="3" placeholder="Write a short description..."></textarea>
+            </div>
+
+            <button type="button" class="btn btn-success" onclick="saveMetadata()">Save Metadata</button>
+            <button type="reset" class="btn btn-secondary ms-2">Clear Form</button>
+        </form>
+    </div>
+
+    @* Uploaded Documents Table *@
+    <div class="p-4 border rounded">
+        <h4>Uploaded Documents</h4>
+        <table class="table table-striped mt-3" id="uploadedDocsTable">
+            <thead>
+                <tr>
+                    <th>Document Title</th>
+                    <th>Category</th>
+                    <th>Tags</th>
+                    <th>Uploaded At</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="docsTableBody">
+                @* Data appear here *@
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let selectedFile = null;
+        let uploadedDocs = [];
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                selectedFile = file;
+                document.getElementById('fileList').innerHTML = `
+                    <div class="d-flex align-items-center justify-content-center mt-3">
+                        <span class="me-2 fw-semibold">${file.name}</span>
+                        <button class="btn btn-sm btn-danger" onclick="removeFile()">×</button>
+                    </div>
+                `;
+                document.getElementById('selectBtnArea').style.display = 'none';
+            }
+        }
+
+        function removeFile() {
+            selectedFile = null;
+            document.getElementById('fileList').innerHTML = '';
+            document.getElementById('selectBtnArea').style.display = 'block';
+            document.getElementById('fileInput').value = '';
+        }
+
+        function saveMetadata() {
+            if (!selectedFile) {
+                alert("Please select a file before saving metadata.");
+                return;
+            }
+
+            const title = document.getElementById('docTitle').value.trim();
+            const category = document.getElementById('docCategory').value;
+            const tags = document.getElementById('docTags').value.trim();
+            const description = document.getElementById('docDescription').value.trim();
+
+            if (!title) {
+                alert("Please enter a document title.");
+                return;
+            }
+
+            const docData = {
+                title,
+                category,
+                tags,
+                description,
+                uploadedAt: new Date().toLocaleString(),
+                status: "Uploaded",
+                fileName: selectedFile.name
+            };
+
+            uploadedDocs.push(docData);
+            updateTable();
+
+            // Save to JSON (simulation only)
+            console.log("Saved Metadata:", JSON.stringify(uploadedDocs, null, 2));
+
+            // Reset form and upload box
+            document.getElementById('metadataForm').reset();
+            removeFile();
+            alert("File and metadata saved successfully!");
+        }
+
+        function updateTable() {
+            const tbody = document.getElementById('docsTableBody');
+            tbody.innerHTML = "";
+            uploadedDocs.forEach((doc, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${doc.title}</td>
+                        <td>${doc.category}</td>
+                        <td>${doc.tags}</td>
+                        <td>${doc.uploadedAt}</td>
+                        <td>${doc.status}</td>
+                        <td><button class="btn btn-sm btn-outline-primary" onclick="viewDocument(${index})">View</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function viewDocument(index) {
+            const doc = uploadedDocs[index];
+            alert("Viewing: " + doc.title + "\n(File: " + doc.fileName + ")");
+        }
+    </script>
+}
+
+
+
+
+

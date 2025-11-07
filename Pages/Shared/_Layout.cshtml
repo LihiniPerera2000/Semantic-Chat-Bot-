@@ -7,45 +7,119 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SemanticBotStar.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="~/css/navigation.css" asp-append-version="true" />
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">SemanticBotStar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+    @* <header>
+        <nav class="navbar navbar-expand-lg border-bottom shadow-sm" style="background: linear-gradient(to right, #092760 50%, #ffffff 100%);">
+            
+            <div class="container-fluid">
+
+                <!-- Hamburger menu Button -->
+                <button class="btn btn-outline-secondary me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <!--  App Name/logo -->
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/Images/BotLogo1.png" alt="Star SemanticBot Logo" style="height:45px; width:auto;" />
+                </a>
+
+
+                <!-- Top navigation menu -->
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Upload">Upload Document</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Chat">Chat</a>
+                        </li>
+                        <li class="nav-item ms-3">
+                            <img src="/Images/StarLogo.png" alt="Company Logo" style="height:40px; width:auto;" />
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- Sidebar  Menu -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Navigation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark d-flex align-items-center" asp-area="" asp-page="/Index">
+                            <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark d-flex align-items-center" asp-area="" asp-page="/Index">
+                            <i class="bi bi-files me-2"></i> Documents
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark d-flex align-items-center" asp-area="" asp-page="/Upload">
+                            <i class="bi bi-file-earmark-arrow-up me-2"></i> Upload Documents
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark d-flex align-items-center" asp-area="" asp-page="/Chat">
+                            <i class="bi bi-chat-left-dots me-2"></i> Chat
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark d-flex align-items-center" asp-area="" asp-page="/Index">
+                            <i class="bi bi-graph-up me-2"></i> Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark d-flex align-items-center" asp-area="" asp-page="/Index">
+                            <i class="bi bi-person me-2"></i> User
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-dark d-flex align-items-center" asp-area="" asp-page="/Index">
+                            <i class="bi bi-gear me-2"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>                     
+    </header> *@
+
+    <header>
+        @await Html.PartialAsync("_Navigation")
     </header>
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @* <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - SemanticBotStar - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer> *@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+    
 </body>
+
 </html>

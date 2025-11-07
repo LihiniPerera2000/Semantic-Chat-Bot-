@@ -1,0 +1,101 @@
+﻿/* Top Navbar */
+.top-navbar {
+    background: linear-gradient(to right, #092760 80%, #ffffff 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+    height: 50px;
+}
+
+/* logo */
+.navbar-logo {
+    height: 40px;
+    width: auto;
+}
+
+.company-logo {
+    height: 30px;
+    width: auto;
+}
+
+/* hamburger icon */
+.custom-toggler {
+    background: transparent;
+    border: none !important;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 6px 10px;
+    transition: transform 0.1s ease, color 0.3s ease;
+}
+
+    .custom-toggler:hover {
+        color: #dce4ff;
+        transform: scale(1.1);
+    }
+
+    .custom-toggler:focus,
+    .custom-toggler:active {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+/* Top nav links*/
+.top-navbar .navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+    .top-navbar .navbar-nav .nav-link:hover {
+        font-weight: 500;
+    }
+
+/* Sidebar */
+.offcanvas {
+    width: 200px !important;
+    background-color: #e7eaee;
+}
+
+/* Sidebar link */
+.offcanvas-body .nav-link {
+    color: #3e578c;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 8px;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
+}
+
+    .offcanvas-body .nav-link:hover {
+        background-color: #ffffff;
+        color: #5a709c;
+        font-weight: 600;
+    }
+
+/* Sidebar header  */
+.offcanvas-header {
+    background-color: #092760;
+    color: red;    
+    height: 50px;
+}
+
+/* Back arrow button*/
+.btn-back {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+    .btn-back:hover {
+        color: #6f9fbb; 
+    }
+
+.offcanvas-header .btn-back {
+    left: 50px;
+    top: 15px;
+}
+

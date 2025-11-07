@@ -45,3 +45,4 @@ C:\Users\lihinip\source\repos\SemanticBotStar\SemanticBotStar\obj\Debug\net8.0\r
 C:\Users\lihinip\source\repos\SemanticBotStar\SemanticBotStar\obj\Debug\net8.0\SemanticBotStar.pdb
 C:\Users\lihinip\source\repos\SemanticBotStar\SemanticBotStar\obj\Debug\net8.0\SemanticBotStar.genruntimeconfig.cache
 C:\Users\lihinip\source\repos\SemanticBotStar\SemanticBotStar\obj\Debug\net8.0\ref\SemanticBotStar.dll
+C:\Users\lihinip\source\repos\SemanticBotStar\SemanticBotStar\obj\Debug\net8.0\SemanticBotStar.sourcelink.json

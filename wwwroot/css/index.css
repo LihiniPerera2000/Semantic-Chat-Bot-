@@ -1,0 +1,122 @@
+﻿/* ---------- Global Styles ---------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6fb;
+    color: #092760;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 60px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 12px rgba(9, 39, 96, 0.15);
+}
+
+/* ---------- Headings ---------- */
+h3 {
+    color: #092760;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Inputs and Buttons ---------- */
+input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 1rem;
+    border: 1px solid #cdd2e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    input[type="text"]:focus {
+        border-color: #092760;
+        box-shadow: 0 0 5px rgba(9, 39, 96, 0.3);
+    }
+
+button {
+    background-color: #092760;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    button:hover {
+        background-color: #0c3985;
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+/* ---------- Divider ---------- */
+hr {
+    border: 0;
+    border-top: 1px solid #dce1ec;
+    margin: 2rem 0;
+}
+
+/* ---------- Spinner / Status ---------- */
+.spinner {
+    color: #6c7aa0;
+    font-size: 0.95rem;
+    margin-top: 8px;
+    display: none;
+}
+
+    .spinner.active {
+        display: inline-block;
+        color: #0c3985;
+        font-weight: 500;
+    }
+
+/* ---------- Result & Context ---------- */
+.result {
+    margin-top: 1rem;
+    background-color: #f1f4fb;
+    border-radius: 10px;
+    padding: 15px;
+    color: #0c3985;
+    line-height: 1.5;
+}
+
+.context {
+    margin-top: 1rem;
+    background-color: #e9eef8;
+    border-radius: 10px;
+    padding: 15px;
+    color: #3b4a75;
+    font-size: 0.9rem;
+}
+
+/* ---------- Code Highlight ---------- */
+code {
+    background-color: #eef1f8;
+    color: #0a2a72;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-family: Consolas, monospace;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    .container {
+        margin: 30px 15px;
+        padding: 20px;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+}

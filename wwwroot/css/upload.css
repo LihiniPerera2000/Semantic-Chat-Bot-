@@ -1,0 +1,162 @@
+﻿:root {
+    --theme-color: #092760;
+    --theme-accent: #0b3885;
+    --theme-light: #f0f4ff;
+}
+
+body {
+    background-color: #f8f9fc;
+    color: #333;
+}
+
+h4 {
+    color: var(--theme-color);
+    font-weight: 600;
+}
+
+/* DRAG & DROP SECTION */
+#dropZone {
+    border: 2px dashed var(--theme-color);
+    background: linear-gradient(to bottom right, #ffffff, var(--theme-light));
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+    #dropZone:hover {
+        background: linear-gradient(to bottom right, #f5f7ff, #e7ebff);
+        box-shadow: 0 0 10px rgba(9, 39, 96, 0.2);
+    }
+
+    #dropZone p {
+        color: var(--theme-color);
+    }
+
+/* “Browse your files” button area */
+#selectBtnArea button {
+    background-color: var(--theme-color);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+    #selectBtnArea button:hover {
+        background-color: var(--theme-accent);
+    }
+
+#selectBtnArea small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+}
+
+/* File name and remove button */
+#fileList .btn-danger {
+    background-color: #dc3545;
+    border: none;
+    border-radius: 50%;
+    font-size: 1rem;
+    line-height: 1rem;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+}
+
+    #fileList .btn-danger:hover {
+        background-color: #bb2d3b;
+    }
+
+/* =============================
+   METADATA FORM
+============================= */
+#metadataSection {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(9, 39, 96, 0.1);
+    border: 1px solid #dce2f0;
+    border-radius: 10px;
+}
+
+    #metadataSection h4 {
+        color: var(--theme-color);
+        margin-bottom: 5px;
+    }
+
+    #metadataSection p {
+        font-size: 0.95rem;
+    }
+
+#metadataForm .form-label {
+    color: var(--theme-color);
+}
+
+#metadataForm input,
+#metadataForm select,
+#metadataForm textarea {
+    border-radius: 6px;
+    border: 1px solid #cdd3e1;
+}
+
+    #metadataForm input:focus,
+    #metadataForm select:focus,
+    #metadataForm textarea:focus {
+        border-color: var(--theme-color);
+        box-shadow: 0 0 4px rgba(9, 39, 96, 0.2);
+    }
+
+/* Buttons */
+#metadataForm .btn-success {
+    background-color: var(--theme-color);
+    border: none;
+    border-radius: 6px;
+}
+
+    #metadataForm .btn-success:hover {
+        background-color: var(--theme-accent);
+    }
+
+#metadataForm .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    border-radius: 6px;
+}
+
+    #metadataForm .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+/* =============================
+   UPLOADED DOCUMENTS TABLE
+============================= */
+#uploadedDocsTable {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(9, 39, 96, 0.1);
+}
+
+    #uploadedDocsTable thead {
+        background-color: var(--theme-color);
+        color: #ffffff;
+    }
+
+    #uploadedDocsTable th,
+    #uploadedDocsTable td {
+        vertical-align: middle;
+    }
+
+    #uploadedDocsTable tr:hover {
+        background-color: var(--theme-light);
+    }
+
+    /* “View” button in table */
+    #uploadedDocsTable .btn-outline-primary {
+        border-color: var(--theme-color);
+        color: var(--theme-color);
+        border-radius: 6px;
+    }
+
+        #uploadedDocsTable .btn-outline-primary:hover {
+            background-color: var(--theme-color);
+            color: white;
+        }

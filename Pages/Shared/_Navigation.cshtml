@@ -1,0 +1,85 @@
+﻿<nav class="navbar navbar-expand-lg border-bottom shadow-sm top-navbar">
+    <div class="container-fluid">
+
+        <!-- Hamburger Menu Button -->
+        <button class="btn custom-toggler me-2" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <!-- App Logo -->
+        <a class="navbar-brand" asp-area="" asp-page="/Index">
+            <img src="~/Images/BotLogo1.png" alt="Star SemanticBot Logo" class="navbar-logo" />
+        </a>
+
+        <!-- Top Navigation -->
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Upload">Upload Document</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Chat">Chat</a>
+                </li>
+                <li class="nav-item ms-5">
+                    <img src="~/Images/StarLogo.png" alt="Company Logo" class="company-logo" />
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu">
+    <div class="offcanvas-header">
+        <a class="navbar-brand" asp-area="" asp-page="/Index">
+            <img src="~/Images/BotLogo1.png" alt="Star SemanticBot Logo" class="navbar-logo" />
+        </a>
+        <button type="button" class="btn-back" data-bs-dismiss="offcanvas">
+            <i class="bi bi-box-arrow-in-left"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav flex-column">
+            <li class="nav-item mb-2">
+                <a class="nav-link " asp-area="" asp-page="/Index">
+                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link " asp-area="" asp-page="/Upload">
+                    <i class="bi bi-file-earmark-arrow-up me-2"></i> Upload Documents
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link " asp-area="" asp-page="/Chat">
+                    <i class="bi bi-chat-left-dots me-2"></i> Chat
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link " asp-area="" asp-page="/Privacy">
+                    <i class="bi bi-shield-lock me-2"></i> Privacy
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link " asp-area="" asp-page="/Index">
+                    <i class="bi bi-graph-up me-2"></i> Analytics
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link " asp-area="" asp-page="/Index">
+                    <i class="bi bi-person me-2"></i> User
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link text-dark d-flex align-items-center" asp-area="" asp-page="/Index">
+                    <i class="bi bi-gear me-2"></i> Settings
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+

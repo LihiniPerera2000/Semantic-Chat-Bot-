@@ -52,7 +52,7 @@
                 return;
             }
 
-            status.textContent = "Ingesting folder...";
+            status.textContent = "Uploading folder...";
             status.classList.add("active");
 
             try {
@@ -62,9 +62,9 @@
                     body: JSON.stringify({ folderPath: path })
                 });
                 const data = await res.json();
-                status.textContent = data.message || " Ingestion complete.";
+                status.textContent = data.message || " Upload complete.";
             } catch (err) {
-                status.textContent = "Error ingesting folder.";
+                status.textContent = "Error Uploading.";
             }
         };
 

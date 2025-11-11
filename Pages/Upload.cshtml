@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/css/upload.css" />
 
 <div class="container mt-4">   
-    <h4 class="mb-4">Upload Documents</h4>
+    <h5 class="mb-4">Upload Documents</h5>
 
     @* Drag & Drop Box  *@
     <div class="mb-4 p-4 border border-2 rounded text-center"
@@ -34,9 +34,8 @@
 
     @* Metadata Form *@
     <div id="metadataSection" class="p-4 border rounded mb-5">
-        <h4>Document Metadata</h4>
-        <p class="text-muted">Enter details about your document to help with organization and search.</p>
-
+        <h6>Document Metadata</h6>
+        <small class="text-muted">Enter details about your document to help with organization and search.</small>
         <form id="metadataForm">
             <div class="mb-3">
                 <label class="form-label fw-semibold">Document Title</label>
@@ -69,7 +68,8 @@
 
     @* Uploaded Documents Table *@
     <div class="p-4 border rounded">
-        <h4>Uploaded Documents</h4>
+        <h6>Recently Uploaded Documents</h6>
+        <p class="text-muted">A list of your latest document uploads.</p>
         <table class="table table-striped mt-3" id="uploadedDocsTable">
             <thead>
                 <tr>

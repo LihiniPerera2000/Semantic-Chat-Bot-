@@ -1,162 +1,186 @@
-﻿:root {
-    --theme-color: #092760;
-    --theme-accent: #0b3885;
-    --theme-light: #f0f4ff;
+﻿.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Segoe UI';
 }
 
-body {
-    background-color: #f8f9fc;
-    color: #333;
+ /*Headings*/ 
+h4, h5, h6 {
+    color: #092760;
+    font-weight: 500;
 }
 
-h4 {
-    color: var(--theme-color);
-    font-weight: 600;
+form-label {
+    font-size: 11px;
+    color: #092760;
+    font-weight: 500;
 }
-
-/* DRAG & DROP SECTION */
+ /*Drag & Drop Box*/ 
 #dropZone {
-    border: 2px dashed var(--theme-color);
-    background: linear-gradient(to bottom right, #ffffff, var(--theme-light));
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
+    border: 2px dashed #092760;
+    border-radius: 8px;
+    padding: 40px 20px;
+    background-color: #f5f7fa;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
 }
 
     #dropZone:hover {
-        background: linear-gradient(to bottom right, #f5f7ff, #e7ebff);
-        box-shadow: 0 0 10px rgba(9, 39, 96, 0.2);
+        background-color: #eaf0ff;
+        border-color: #092760;
+    }
+    #dropZone i.bi-cloud-arrow-up {
+        font-size: 3rem;
+        color: #5a6171; 
     }
 
-    #dropZone p {
-        color: var(--theme-color);
-    }
-
-/* “Browse your files” button area */
-#selectBtnArea button {
-    background-color: var(--theme-color);
-    border: none;
-    border-radius: 6px;
-    padding: 6px 10px;
+ /*Browse button*/ 
+#selectBtnArea .btn-primary {
+    background-color: #092760;
+    border-color: #092760;
     font-weight: 500;
+    font-size: 12px;
     transition: background-color 0.3s ease;
 }
 
-    #selectBtnArea button:hover {
-        background-color: var(--theme-accent);
+    #selectBtnArea .btn-primary:hover {
+        background-color: #0b3a8a;
+        border-color: #0b3a8a;
     }
 
-#selectBtnArea small {
-    display: block;
-    margin-top: 5px;
-    color: #666;
+ /*File list inside drop zone*/ 
+#fileList div {
+    background-color: #f0f2f5;
+    padding: 8px 12px;
+    border-radius: 6px;
 }
 
-/* File name and remove button */
+ /*Remove file button*/ 
 #fileList .btn-danger {
-    background-color: #dc3545;
+    background-color: #d9534f;
     border: none;
-    border-radius: 50%;
-    font-size: 1rem;
-    line-height: 1rem;
-    width: 28px;
-    height: 28px;
-    padding: 0;
+    padding: 0 6px;
 }
 
     #fileList .btn-danger:hover {
-        background-color: #bb2d3b;
+        background-color: #c9302c;
     }
 
-/* =============================
-   METADATA FORM
-============================= */
+ /*Metadata Form*/ 
 #metadataSection {
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(9, 39, 96, 0.1);
-    border: 1px solid #dce2f0;
-    border-radius: 10px;
+    background-color: #fdfdfd;
+    border: 1px solid #d0d7e0;
+    border-radius: 8px;
 }
 
-    #metadataSection h4 {
-        color: var(--theme-color);
-        margin-bottom: 5px;
+    #metadataSection label {
+        color: #092760;
+        font-weight: 600;
+        font-size: 12px;
     }
 
     #metadataSection p {
-        font-size: 0.95rem;
+        color: red;
     }
 
-#metadataForm .form-label {
-    color: var(--theme-color);
-}
-
-#metadataForm input,
-#metadataForm select,
-#metadataForm textarea {
-    border-radius: 6px;
-    border: 1px solid #cdd3e1;
-}
-
-    #metadataForm input:focus,
-    #metadataForm select:focus,
-    #metadataForm textarea:focus {
-        border-color: var(--theme-color);
-        box-shadow: 0 0 4px rgba(9, 39, 96, 0.2);
+     /*Metadata Form Inputs*/ 
+    #metadataSection .form-control,
+    #metadataSection .form-select,
+    #metadataSection textarea {
+        border-radius: 6px;
+        border: 1px solid #cfd8e3;
     }
 
-/* Buttons */
-#metadataForm .btn-success {
-    background-color: var(--theme-color);
-    border: none;
-    border-radius: 6px;
-}
-
-    #metadataForm .btn-success:hover {
-        background-color: var(--theme-accent);
+    #metadataSection .btn-success {
+        background-color: #092760;
+        border-color: #092760;
+        font-weight: 500;
+        font-size: 12px;
+        transition: background-color 0.3s ease;
     }
 
-#metadataForm .btn-secondary {
-    background-color: #6c757d;
-    border: none;
-    border-radius: 6px;
-}
+        #metadataSection .btn-success:hover {
+            background-color: #0b3a8a;
+            border-color: #0b3a8a;
+        }
 
-    #metadataForm .btn-secondary:hover {
-        background-color: #5a6268;
+    #metadataSection .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        font-weight: 500;
+        font-size: 12px;
+        transition: background-color 0.3s ease;
     }
 
-/* =============================
-   UPLOADED DOCUMENTS TABLE
-============================= */
+        #metadataSection .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+
+ /*Uploaded Documents Table*/ 
 #uploadedDocsTable {
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #ffffff;
-    box-shadow: 0 2px 6px rgba(9, 39, 96, 0.1);
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px; 
 }
 
-    #uploadedDocsTable thead {
-        background-color: var(--theme-color);
-        color: #ffffff;
+    #uploadedDocsTable th {
+        background-color: #ffffff;
+        color: #092760;
+        font-size: 14px;
+        font-weight: 600;
     }
 
-    #uploadedDocsTable th,
     #uploadedDocsTable td {
         vertical-align: middle;
+        padding: 12px;
     }
 
-    #uploadedDocsTable tr:hover {
-        background-color: var(--theme-light);
+    #uploadedDocsTable tr {
+        background-color: #f7f9fc;
+        transition: background-color 0.3s ease;
     }
 
-    /* “View” button in table */
+        #uploadedDocsTable tr:hover {
+            background-color: #e1e8f7;
+        }
+
     #uploadedDocsTable .btn-outline-primary {
-        border-color: var(--theme-color);
-        color: var(--theme-color);
-        border-radius: 6px;
+        border-color: #092760;
+        color: #092760;
+        font-weight: 600;
     }
 
         #uploadedDocsTable .btn-outline-primary:hover {
-            background-color: var(--theme-color);
-            color: white;
+            background-color: #092760;
+            color: #ffffff;
+            border-color: #092760;
         }
+
+.spinner {
+    color: #092760;
+    font-weight: 500;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #f5f7fa;
+    border-radius: 6px;
+    border: 1px solid #d0d7e0;
+    color: #092760;
+}
+
+.context {
+    margin-top: 12px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #d0d7e0;
+    border-radius: 6px;
+    color: #092760;
+}
+
+a:hover {
+    text-decoration: underline;
+}
